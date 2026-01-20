@@ -11,10 +11,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, classification_report, confusion_matrix
 
-
-# =====================
 # Load dataset
-# =====================
 df = pd.read_csv("diabetes_prediction_dataset.csv")
 
 print("Original shape:", df.shape)
