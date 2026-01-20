@@ -15,10 +15,8 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 df = pd.read_csv("diabetes_prediction_dataset.csv")
 
 print("Original shape:", df.shape)
-
-# =====================
 # Basic cleaning
-# =====================
+
 df = df.drop_duplicates()
 print("After dropping duplicates:", df.shape)
 
@@ -83,14 +81,10 @@ X_train, X_test, y_train, y_test = train_test_split(
     stratify=y
 )
 
-# =====================
-# Train
-# =====================
-gb_pipeline.fit(X_train, y_train)
 
-# =====================
+# Train
+gb_pipeline.fit(X_train, y_train)
 # Evaluation
-# =====================
 y_pred = gb_pipeline.predict(X_test)
 
 acc = accuracy_score(y_test, y_pred)
@@ -107,10 +101,10 @@ print(f"F1 Score : {f1:.6f}")
 print("\nConfusion Matrix:\n", confusion_matrix(y_test, y_pred))
 print("\nClassification Report:\n", classification_report(y_test, y_pred))
 
-# =====================
-# Save model (IMPORTANT)
-# =====================
+
+# Save model 
+
 with open("diabetes_gb_pipeline.pkl", "wb") as f:
     pickle.dump(gb_pipeline, f)
 
-print("\n✅ Gradient Boosting pipeline saved as diabetes_gb_pipeline.pkl")
+print("\n Gradient Boosting pipeline saved as diabetes_gb_pipeline.pkl")
